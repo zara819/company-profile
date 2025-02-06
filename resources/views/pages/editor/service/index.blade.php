@@ -10,16 +10,10 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Produk</h1>
         
-        <form action="" id="form_cari" method="post">
-            @csrf
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Cari nama" name="cari" id="cari">
-                <div class="input-group-append">
-                    <button type="button" id="add_new" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add</button>
-                  <button class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" type="button" id="btn-cari">Cari</button>
-                </div>
-              </div>
-        </form>
+        <div class="input-group-append">
+        <button type="button" class="btn btn-outline-primary " id="add_new" >Add</button>
+         
+    </div>
     </div>
     
     <!-- DataTales Example -->
@@ -71,8 +65,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Image</label>
-                        <div id="imagev" class="my-2"></div>
+                        <label for="file">Image</label>
+                        <div id="imagev" class="my-2"></div> <!-- Tempat untuk menampilkan pratinjau gambar -->
                         <input type="file" id="file" name="file" class="form-control" onchange="previewImage(this, '#imagev');">
                     </div>
                 </div>
@@ -273,27 +267,31 @@
         });
 
         function previewImage(input, previewSelector) {
-            const file = input.files[0];
+            const file = input.files[0]; // Mengambil file pertama yang dipilih
             if (file) {
+                // Memastikan file yang dipilih adalah gambar dengan format yang valid
                 const validTypes = ["image/jpeg", "image/png", "image/jpg"];
                 if (!validTypes.includes(file.type)) {
                     alert("Hanya file gambar dengan format JPEG, PNG yang diperbolehkan!");
-                    input.value = ""; // Reset file input
-                    $(previewSelector).empty(); // Hapus pratinjau
+                    input.value = ""; // Reset file input jika file tidak valid
+                    $(previewSelector).empty(); // Hapus pratinjau gambar
                     return;
                 }
 
+                // Membaca file gambar menggunakan FileReader
                 const reader = new FileReader();
                 reader.onload = function (e) {
+                    // Menampilkan gambar di dalam elemen previewSelector (contohnya #imagev)
                     $(previewSelector).html(
                         `<img src="${e.target.result}" class="img-fluid rounded" style="max-width: 300px; max-height: 300px;">`
                     );
                 };
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(file); // Membaca file sebagai data URL untuk pratinjau
             } else {
-                $(previewSelector).empty(); // Hapus pratinjau jika file dihapus
+                $(previewSelector).empty(); // Hapus pratinjau jika tidak ada file yang dipilih
             }
-        }
+}
+
 
         function toastr_success(msg){
         const Toast = Swal.mixin({

@@ -10,16 +10,11 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">User</h1>
         
-        <form action="" id="form_cari" method="post">
-            @csrf
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Cari nama" name="cari" id="cari">
-                <div class="input-group-append">
+       
+            <div class="input-group-append">
                     <button type="button" id="add_new" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add</button>
-                  <button class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" type="button" id="btn-cari">Cari</button>
                 </div>
-              </div>
-        </form>
+       
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

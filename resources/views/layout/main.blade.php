@@ -21,6 +21,8 @@
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/loader.css')}}" rel="stylesheet">
+   
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
@@ -37,7 +39,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Ecoluxe <sup>Mebel</sup></div>
             </a>
 
             <!-- Divider -->
@@ -46,7 +48,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{Request::is('editor')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.home') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    
+                    <i class="fas fa-th-large"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -54,32 +57,32 @@
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/users')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.users') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-user"></i>
                     <span>User</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/master-head')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.master-head') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-th-list"></i>
                     <span>Master Head</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/contact')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.contact') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class= "fas fa-id-badge"></i>
                     <span>Contact</span></a>
             </li>
             
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/service')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.service') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-tools"></i>
                     <span>Service</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/portofolio')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.portofolio') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class=" fas fa-solid fa-bars"></i>
                     <span>Portofolio</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -94,8 +97,6 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-            
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -178,18 +179,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -214,7 +204,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Ecoluxe Mebel &copy; 2025</span>
                     </div>
                 </div>
             </footer>
@@ -276,6 +266,9 @@
     <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
     <!-- Page level plugins -->
     <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
@@ -299,7 +292,7 @@
                             $("#notif").text(totalNotif);
                         }
                         $('#notif-list').empty();
-                        if(res.contact>0){
+                        if(res.contact> 0){
                             $('#notif-list').append(
                                 `
                                 <a class="dropdown-item d-flex align-items-center" href="{{route ('editor.contact')}}">
@@ -315,7 +308,7 @@
                                 `
                             );
                         }
-                        if(totalNotif==0){
+                        if(totalNotif== 0){
                             $('#notif-list').append(
                                 `
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -326,7 +319,7 @@
                         }
                     },
                 });
-            };
+            }
             // Panggil fungsi notification pertama kali
     notification();
 
@@ -344,9 +337,10 @@ $(document).on('click', '.dropdown-item', function() {
                 $("#notif").text('0'); // Set jumlah notifikasi menjadi 0
                 $('#notif-list').empty(); // Kosongkan daftar notifikasi
                 $('#notif-list').append('<a class="dropdown-item d-flex align-items-center" href="#">Tidak ada notifikasi baru</a>');
-            } else {
-                alert('Gagal menandai sebagai dibaca');
-            }
+                notification();
+                } else {
+                    alert('Gagal menandai sebagai dibaca');
+                }
         },
         error: function(xhr, status, error) {
             console.error(xhr.responseText);  // Cek error jika ada

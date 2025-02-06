@@ -108,77 +108,18 @@ class PublicController extends Controller
         return response()->json($res, $rescode);
     }
 
-    // public function updateMessage(Request $request): JsonResponse
-    // {
-    //     date_default_timezone_set('Asia/Jakarta');
-    //     $rescode = 200;
-    //     $id = $request->input('id', 0);
-    //     try {
-    //         $rules = [
-    //             'name' => 'required|string|max:255',
-    //             'email' => 'required|email:dns|max:255',
-    //             'phone' => 'required|string|max:15',
-    //             'message' => 'required|string|max:255',
-            
-    //         ];
-    //         $massages = [
-    
-    //             'required' => ':attribute wajib diisi',
-    //             'string' => ':attribute harus bertipe string',
-    //             'max' => ':attribute tidak boleh lebih dari :max',
-    //             'email.dns'=> 'domainemail tidak valid',
-    //             'email'=> 'email tidak valid',
-                
-    //         ];
-    //         $data = $request->all();
-    //         $validator = Validator::make($data, $rules, $massages);
-    //         if ($validator->fails()) {
-    //             $v_error = $validator->errors()->all();
-    //             $res = ['success' => 0, 'messages' => implode(',', $v_error)];
-    //         } else {
-    //             $validData = $validator->validate();
-    //             $contact = Contact::find($id);
-    //             if ($contact) {
-    //                 $contact->update($validData);
-    //                 $res = ['success' => 1, 'messages' => 'Success Update Data'];
-    //             } else {
-    //                 $res = ['success' => 0, 'messages' => 'Data tidak ditemukan'];
-    //             }
-    //         }
-    //     } catch (QueryException $e) {
-    //         $res = ['success' => 0, 'messages' => 'Ops terjadi kesalahan saat update data'];
-    //         Log::error('QueryException: '.$e);
-    //     } catch (Exception $e) {
-    //         $res = ['success' => 0, 'messages' => 'Ops terjadi kesalahan pada server'];
-    //         Log::error('Exception: '.$e);
-    //     }
+    public function markAsRead(Request $request)
+    {
+        // Update status notifikasi (misalnya, menandai sebagai sudah dibaca di database)
+        $unreadMessages = Contact::where('is_read', false)->get();
 
-    //     return response()->json($res, $rescode);
-    // }
+        foreach ($unreadMessages as $message) {
+            $message->update(['is_read' => true]);
+        }
 
-    public function markAsRead($notifId)
-{
-    // Cari notifikasi berdasarkan ID
-    $notif = Contact::find($notifId);
-    
-    // Jika notifikasi ditemukan, ubah status menjadi sudah dibaca
-    if ($notif) {
-        $notif->is_read = 1;  // Tandai notifikasi sebagai sudah dibaca
-        $notif->save();
-        
-        // Ambil jumlah notifikasi yang belum dibaca setelah perubahan
-        $unreadCount = Contact::where('is_read', 0)->count();
-
-        // Kembalikan jumlah notifikasi yang belum dibaca
-        return response()->json([
-            'status' => 'success',
-            'unreadCount' => $unreadCount  // Kembalikan jumlah notifikasi yang belum dibaca
-        ]);
+        // Mengembalikan response sukses
+        return response()->json(['status' => 'success']);
     }
-    
-    // Jika notifikasi tidak ditemukan
-    return response()->json(['status' => 'error', 'message' => 'Notifikasi tidak ditemukan']);
-}
 
 }
 
