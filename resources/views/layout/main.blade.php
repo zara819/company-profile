@@ -21,7 +21,7 @@
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/loader.css')}}" rel="stylesheet">
-   
+
     <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -48,7 +48,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{Request::is('editor')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.home') }}">
-                    
+
                     <i class="fas fa-th-large"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,26 +63,26 @@
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/master-head')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.master-head') }}">
-                <i class="fas fa-th-list"></i>
+                    <i class="fas fa-th-list"></i>
                     <span>Master Head</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/contact')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.contact') }}">
-                    <i class= "fas fa-id-badge"></i>
+                    <i class="fas fa-id-badge"></i>
                     <span>Contact</span></a>
             </li>
-            
+
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/service')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.service') }}">
-                <i class="fas fa-tools"></i>
+                    <i class="fas fa-tools"></i>
                     <span>Service</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item {{Request::is('editor/portofolio')? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('editor.portofolio') }}">
-                <i class=" fas fa-solid fa-bars"></i>
+                    <i class=" fas fa-solid fa-bars"></i>
                     <span>Portofolio</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -115,7 +115,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -145,7 +145,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        
+
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -162,7 +162,7 @@
                                     Message Center
                                 </h6>
                                 <div id="notif-list"></div>
-                                
+
                             </div>
                         </li>
 
@@ -179,7 +179,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -236,18 +236,18 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <form action="{{route('logout')}}" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Logout</button>
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Logout</button>
                     </form>
-                   
-                    
+
+
                 </div>
             </div>
         </div>
     </div>
-<div class="loading-clock">
-    <div class="loader"></div>
-</div>
+    <div class="loading-clock">
+        <div class="loader"></div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
@@ -267,8 +267,8 @@
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    
+
+
     <!-- Page level plugins -->
     <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
@@ -276,23 +276,23 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <script>
-        $(document).ready(function(){
-            function notification(){
+        $(document).ready(function() {
+            function notification() {
                 $.ajax({
-                    url:"{{route ('editor.notif') }}",
-                    type:"GET",
-                    dataType:"json",
-                    success:function(res){
-                        let totalNotif =  res.total;
-                        if(totalNotif > 0){
+                    url: "{{route ('editor.notif') }}",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(res) {
+                        let totalNotif = res.total;
+                        if (totalNotif > 0) {
                             $("#notif").text(totalNotif);
-                        }else{
+                        } else {
                             $("#notif").text(totalNotif);
                         }
                         $('#notif-list').empty();
-                        if(res.contact> 0){
+                        if (res.contact > 0) {
                             $('#notif-list').append(
                                 `
                                 <a class="dropdown-item d-flex align-items-center" href="{{route ('editor.contact')}}">
@@ -308,7 +308,7 @@
                                 `
                             );
                         }
-                        if(totalNotif== 0){
+                        if (totalNotif == 0) {
                             $('#notif-list').append(
                                 `
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -321,37 +321,37 @@
                 });
             }
             // Panggil fungsi notification pertama kali
-    notification();
+            notification();
 
-// Update notifikasi setiap 10 detik
-setInterval(notification, 10000);
+            // Update notifikasi setiap 10 detik
+            setInterval(notification, 10000);
 
-// Ketika pengguna mengklik notifikasi, tandai sebagai dibaca
-$(document).on('click', '.dropdown-item', function() {
-    $.ajax({
-        url: "{{ route('editor.mark-read') }}",
-        type: "GET",
-        dataType: "json",
-        success: function(response) {
-            if (response.status === 'success') {
-                $("#notif").text('0'); // Set jumlah notifikasi menjadi 0
-                $('#notif-list').empty(); // Kosongkan daftar notifikasi
-                $('#notif-list').append('<a class="dropdown-item d-flex align-items-center" href="#">Tidak ada notifikasi baru</a>');
-                notification();
-                } else {
-                    alert('Gagal menandai sebagai dibaca');
-                }
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);  // Cek error jika ada
-        }
-    });
-});
-});
+            // Ketika pengguna mengklik notifikasi, tandai sebagai dibaca
+            $(document).on('click', '.dropdown-item', function() {
+                $.ajax({
+                    url: "{{ route('editor.mark-read') }}",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            $("#notif").text('0'); // Set jumlah notifikasi menjadi 0
+                            $('#notif-list').empty(); // Kosongkan daftar notifikasi
+                            $('#notif-list').append('<a class="dropdown-item d-flex align-items-center" href="#">Tidak ada notifikasi baru</a>');
+                            notification();
+                        } else {
+                            alert('Gagal menandai sebagai dibaca');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText); // Cek error jika ada
+                    }
+                });
+            });
+        });
     </script>
 
     @yield('script')
-    
+
 </body>
 
 </html>
