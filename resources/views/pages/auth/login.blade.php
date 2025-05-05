@@ -41,11 +41,11 @@
                             </div>
                             <button type="submit" class="btn btn-secondary btn-user btn-block">Login</button>
                         </form>
-                        </div>
                     </div>
                 </div>
-            </center>
-        </div>
+            </div>
+        </center>
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
@@ -60,7 +60,7 @@
 
     @if(session()->has('login_error'))
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -68,7 +68,7 @@
             });
         });
     </script>
-@endif
+    @endif
 </body>
 
 </html>

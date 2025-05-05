@@ -69,7 +69,7 @@
 </section>
 <!-- Contact-->
 <section class="page-section" id="contact">
-    <div class="container">
+    <div class="container mt-4">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading text-muted"></h3>
